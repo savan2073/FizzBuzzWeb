@@ -5,6 +5,18 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Cześć</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome @Model.Name</h1>
+    <form method="post">
+        <label style="float: left" asp-for="FizzBuzz.FirstName"></label>
+        <input class="form-control" id="formGroupExampleInput" placeholder="Wprowadź swoje imię" asp-for="FizzBuzz.FirstName" />
+        <label style="float: left" asp-for="FizzBuzz.BirthYear"></label>
+        <input class="form-control" id="formGroupExampleInput" placeholder="Podaj swój rok urodzenia" asp-for="FizzBuzz.BirthYear" />
+        <button type="submit" class="btn btn-primary">Zatwierdź</button><br/>
+        @if(Model.FizzBuzz != null)
+        {
+            <div class="alert alert-primary" role="alert">@Model.AlertMessage</div>
+        }
+        <span asp-validation-for="FizzBuzz.FirstName" class="text-danger"></span><br />
+        <span asp-validation-for="FizzBuzz.BirthYear" class="text-danger"></span>
+    </form>
 </div>
